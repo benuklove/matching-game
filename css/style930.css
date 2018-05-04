@@ -1,7 +1,7 @@
 body {
     margin: 0 auto;
     padding: 10px;
-    max-width: 1024px;
+    max-width: 915px;
     text-align: center;
 }
 .container {
@@ -9,7 +9,17 @@ body {
     flex-wrap: wrap;
 }
 .box {
-    width: 100%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-color: red;  /* temporary */
+    color: yellow;   /* temporary */
+}
+.card {
+    margin: 10px;
+    width: 100px;
+    height: 100px;
+    font-size: 2em;
 }
 .info {
     width: 25%;
@@ -18,8 +28,16 @@ body {
     background-color: goldenrod;
 }
 .gameboard {
-    width: 75%;
-    max-width: 75%;
+    width: 65%;
+    max-width: 65%;
     height: 500px;
+    padding-left: 5%;
+    padding-right: 5%;
     background-color: dodgerblue;
+}
+.deck {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: center;
+    justify-content: space-around;
 }
