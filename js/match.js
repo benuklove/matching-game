@@ -27,21 +27,22 @@ function shuffle(array) {
 // MAYBE USE createDocumentFragment !!!!!
 
 function addCardsToBoard(cardArray) {
-    // shuffle here first
+    const cards = cardArray.concat(cardArray);
+    const shuffledCards = shuffle(cards);
+
     const board = document.querySelector('.gameboard');
 
-    for (let x = 1; x <=2; x++) {
-        for (let i = 0; i < cardArray.length; i++) {
-            let newCardDiv = document.createElement('div');
-            newCardDiv.classList.add('box');
-            newCardDiv.classList.add('card');
-            let icon = document.createElement('i');
-            icon.classList.add('fas');
-            icon.classList.add(cardArray[i]);
+    for (let i = 0; i < shuffledCards.length; i++) {
+        // Probably a better way to add multiple classes
+        let newCardDiv = document.createElement('div');
+        newCardDiv.classList.add('box');
+        newCardDiv.classList.add('card');
+        let icon = document.createElement('i');
+        icon.classList.add('fas');
+        icon.classList.add(shuffledCards[i]);
 
-            newCardDiv.appendChild(icon);
-            board.appendChild(newCardDiv);
-        }
+        newCardDiv.appendChild(icon);
+        board.appendChild(newCardDiv);
     }
 }
 
