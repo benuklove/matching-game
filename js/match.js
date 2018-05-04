@@ -1,12 +1,12 @@
 cards = [
-    '<i class="fas fa-umbrella"></i>',
-    '<i class="fas fa-fire"></i>',
-    '<i class="fas fa-chess-rook"></i>',
-    '<i class="fas fa-heart"></i>',
-    '<i class="fas fa-paw"></i>',
-    '<i class="far fa-snowflake"></i>',
-    '<i class="fas fa-tree"></i>',
-    '<i class="fas fa-truck-moving"></i>',
+    "fa-umbrella",
+    "fa-fire",
+    "fa-chess-rook",
+    "fa-heart",
+    "fa-snowflake",
+    "fa-paw",
+    "fa-tree",
+    "fa-truck-moving",
 ]
 
 // Shuffle function from http://stackoverflow.com/a/2450976
@@ -23,3 +23,26 @@ function shuffle(array) {
 
     return array;
 }
+
+// MAYBE USE createDocumentFragment !!!!!
+
+function addCardsToBoard(cardArray) {
+    // shuffle here first
+    const board = document.querySelector('.gameboard');
+
+    for (let x = 1; x <=2; x++) {
+        for (let i = 0; i < cardArray.length; i++) {
+            let newCardDiv = document.createElement('div');
+            newCardDiv.classList.add('box');
+            newCardDiv.classList.add('card');
+            let icon = document.createElement('i');
+            icon.classList.add('fas');
+            icon.classList.add(cardArray[i]);
+
+            newCardDiv.appendChild(icon);
+            board.appendChild(newCardDiv);
+        }
+    }
+}
+
+addCardsToBoard(cards);
