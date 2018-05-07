@@ -1,4 +1,7 @@
-cards = [
+
+let state = {};
+
+const cards = [
     "fa-umbrella",
     "fa-fire",
     "fa-chess-rook",
@@ -24,8 +27,32 @@ function shuffle(array) {
     return array;
 }
 
-// MAYBE USE createDocumentFragment !!!!!
+function displayCard (event) {
+    const tgt = event.target;
+    if (tgt.classList.contains('open')) {
+        tgt.classList.replace('open', 'closed');
+        return 1;
+    }
+    else if (tgt.classList.contains('closed')) {
+        tgt.classList.replace('closed', 'open');
+        return 0;
+    }
+    else {
+        tgt.classList.add('open');
+        return 1;
+    }
+}
 
+function clickListener (event) {
+    console.log("card clicked");
+    const status = displayCard(event);
+    const card = document.getElementById(event.target.firstChild.innerHTML);
+    console.log(card);
+}
+
+// IF THERE'S A MATCH - Remove the listeners for those two.
+
+// MAYBE USE createDocumentFragment !!!!!
 function addCardsToBoard(cardArray) {
     const cards = cardArray.concat(cardArray);
     const shuffledCards = shuffle(cards);
@@ -33,17 +60,20 @@ function addCardsToBoard(cardArray) {
     const board = document.querySelector('.gameboard');
 
     for (let i = 0; i < shuffledCards.length; i++) {
-        // Probably a better way to add multiple classes
+        // There's probably a better way to add multiple classes
         let newCardDiv = document.createElement('div');
         newCardDiv.classList.add('box');
         newCardDiv.classList.add('card');
+        newCardDiv.id = i;
+        let listener = newCardDiv.addEventListener('click', clickListener, false);
         let icon = document.createElement('i');
         icon.classList.add('fas');
         icon.classList.add(shuffledCards[i]);
-
+        state[shuffledCards[i]] = 0;  // Not sure if I want to use id's as keys or fas classes.
         newCardDiv.appendChild(icon);
         board.appendChild(newCardDiv);
     }
+    console.log(state);
 }
 
 addCardsToBoard(cards);
