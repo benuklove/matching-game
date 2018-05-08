@@ -52,7 +52,7 @@ function clickListener (event) {
 function getDeckStatus() {
     let total = 0;
     for (let c = 0; c < 16; c++) {
-        if (state[c].open == 1) {
+        if (state[c].open == 1 && state[c].locked == 0) {
             total = total + 1;
         }
     }
@@ -65,7 +65,7 @@ function compareCards () {
     let cardOne;
     let cardTwo;
     for (let c = 0; c < 16; c++) {
-        if (state[c].open == 1) {
+        if (state[c].open == 1 && state[c].locked == 0) {
             if (flag == 0) {
                 cardOne = c;
                 flag = 1;
@@ -77,14 +77,34 @@ function compareCards () {
     }
     if (state[cardOne].cardName === state[cardTwo].cardName) {
         console.log("they match!");
+        itsAMatch(state[cardOne], state[cardTwo]);
     }
     else {
         console.log("they don't match.")
+        itsNotAMatch(state[cardOne], state[cardTwo]);
     }
     // console.log("cardOne: ", cardOne, "cardTwo: ", cardTwo);
     // const status = displayCard(event);
     // const card = event.target.id;
     // state[card].open = 1;
+}
+
+function itsAMatch (firstCard, secondCard) {
+    firstCard.locked = 1;
+    secondCard.locked = 1;
+}
+
+function itsNotAMatch (cardOne, cardTwo) {
+    setTimeout(function () {
+        cardOne.open = 0;
+        cardTwo.open = 0;
+
+        let firstCard = document.getElementById(cardOne.divID);
+        let secondCard = document.getElementById(cardTwo.divID);
+
+        firstCard.classList.replace('open', 'closed');
+        secondCard.classList.replace('open', 'closed');
+    }, 2000);
 }
 
 function displayCard (target) {
