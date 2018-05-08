@@ -28,39 +28,83 @@ function shuffle(array) {
     return array;
 }
 
-function displayCard (event) {
-    const tgt = event.target;
-    if (tgt.classList.contains('open')) {
-        tgt.classList.replace('open', 'closed');
-        return 1;
+function clickListener (event) {
+    let target = event.target;
+    // Handle icon or card div clicks
+    if (target.classList.contains("fas")) {
+        target = target.parentElement;
+        // newTarget.dispatchEvent(event);
     }
-    else if (tgt.classList.contains('closed')) {
-        tgt.classList.replace('closed', 'open');
-        return 0;
+
+    // console.log("card clicked");
+    let status = getDeckStatus();  // A number
+
+    if (status == 0) {
+        displayCard(target);
+    }
+    else if (status == 1) {
+        displayCard(target);
+        compareCards();
+    }
+}
+
+// Determine if it's okay to flip the card (if there are 0 or 1 cards open)
+function getDeckStatus() {
+    let total = 0;
+    for (let c = 0; c < 16; c++) {
+        if (state[c].open == 1) {
+            total = total + 1;
+        }
+    }
+    console.log("total: ", total);
+    return total;
+}
+
+function compareCards () {
+    let flag = 0;
+    let cardOne;
+    let cardTwo;
+    for (let c = 0; c < 16; c++) {
+        if (state[c].open == 1) {
+            if (flag == 0) {
+                cardOne = c;
+                flag = 1;
+            }
+            else {
+                cardTwo = c;
+            }
+        }
+    }
+    if (state[cardOne].cardName === state[cardTwo].cardName) {
+        console.log("they match!");
     }
     else {
-        tgt.classList.add('open');
-        return 1;
+        console.log("they don't match.")
     }
+    // console.log("cardOne: ", cardOne, "cardTwo: ", cardTwo);
+    // const status = displayCard(event);
+    // const card = event.target.id;
+    // state[card].open = 1;
 }
 
-function clickListener (event) {
-    console.log("card clicked");
-    const status = displayCard(event);
-    // const card = document.getElementById("1");
-    const card = event.target.firstElementChild.classList;
-    state[card] = 1;
-    console.log(card);
-    console.log(state);
-    // clickResponse(card);
-}
-
-function clickResponse (card) {
-    const stateArray = state.values()
-    const reducer = (accumulator, currentValue) => accumulator + currentValue;
-    if (stateArray.reduce(reducer) % 2 == 0) {
-
+function displayCard (target) {
+    let flag = 0;
+    // console.log("from displayCard(event): ", typeof(tgt.id), tgt.id);  // A string
+    if (target.classList.contains('open')) {
+        target.classList.replace('open', 'closed');
+        flag = 1;
     }
+    else if (target.classList.contains('closed')) {
+        target.classList.replace('closed', 'open');
+        flag = 0;
+    }
+    else {
+        target.classList.add('open');
+        flag = 1;
+    }
+    console.log(state[parseInt(target.id, 10)]);
+    state[parseInt(target.id, 10)].open = 1;
+    return flag;
 }
 
 // IF THERE'S A MATCH - Remove the listeners for those two.
@@ -72,34 +116,31 @@ function addCardsToBoard(cardArray) {
 
     const board = document.querySelector('.gameboard');
 
-    // state.cardProps = {};
     for (let i = 0; i < shuffledCards.length; i++) {
         // There's probably a better way to add multiple classes
         let newCardDiv = document.createElement('div');
+        // let listener = newCardDiv.addEventListener('click', clickListener, false);
         newCardDiv.classList.add('box');
         newCardDiv.classList.add('card');
         newCardDiv.id = i;
-        let listener = newCardDiv.addEventListener('click', clickListener, false);
         let icon = document.createElement('i');
         icon.classList.add('fas');
         icon.classList.add(shuffledCards[i]);
+
+        newCardDiv.addEventListener('click', clickListener, false);
+        // icon.addEventListener('click', clickListener, false);
         // state[shuffledCards[i]] = 0;  // Not sure if I want to use id's as keys or fas classes.
         let cardProps = {};
-        cardProps["cardName"] = icon.classList;
+        cardProps["cardName"] = icon.classList.item(1);
         cardProps["open"] = 0;
         cardProps["divID"] = i;
+        cardProps["locked"] = 0;
         state.push(cardProps);
-        // state.cardProps["cardName"] = icon.classList;
-        // state.cardProps["open"] = 0;
 
-        // state[icon.classList] = 0;
         newCardDiv.appendChild(icon);
         board.appendChild(newCardDiv);
     }
     console.log(state);
-    // for (let dude = 0; dude < 16; dude++) {
-    //     console.log(state[dude]);
-    // }
 }
 
 addCardsToBoard(cards);
