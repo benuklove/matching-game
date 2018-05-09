@@ -48,15 +48,29 @@ function clickListener (event) {
     }
 }
 
+function gameComplete() {
+    setTimeout(function () {
+        let lockedCount = 0;
+        for (let c = 0; c < 16; c++) {
+            if (state[c].locked == 1) {
+                lockedCount = lockedCount + 1;
+            }
+        }
+        if (lockedCount == 16) {
+            window.alert("yay! \n you won! \n zero points");
+        }
+    }, 1000);
+}
+
 // Determine if it's okay to flip the card (if there are 0 or 1 cards open)
 function getDeckStatus() {
     let total = 0;
     for (let c = 0; c < 16; c++) {
         if (state[c].open == 1 && state[c].locked == 0) {
-            total = total + 1;
+            total++;
         }
     }
-    console.log("total: ", total);
+    // console.log("total: ", total);
     return total;
 }
 
@@ -83,15 +97,13 @@ function compareCards () {
         console.log("they don't match.")
         itsNotAMatch(state[cardOne], state[cardTwo]);
     }
-    // console.log("cardOne: ", cardOne, "cardTwo: ", cardTwo);
-    // const status = displayCard(event);
-    // const card = event.target.id;
-    // state[card].open = 1;
 }
 
 function itsAMatch (firstCard, secondCard) {
     firstCard.locked = 1;
     secondCard.locked = 1;
+
+    gameComplete();
 }
 
 function itsNotAMatch (cardOne, cardTwo) {
@@ -122,7 +134,7 @@ function displayCard (target) {
         target.classList.add('open');
         flag = 1;
     }
-    console.log(state[parseInt(target.id, 10)]);
+    // console.log(state[parseInt(target.id, 10)]);
     state[parseInt(target.id, 10)].open = 1;
     return flag;
 }
@@ -139,7 +151,6 @@ function addCardsToBoard(cardArray) {
     for (let i = 0; i < shuffledCards.length; i++) {
         // There's probably a better way to add multiple classes
         let newCardDiv = document.createElement('div');
-        // let listener = newCardDiv.addEventListener('click', clickListener, false);
         newCardDiv.classList.add('box');
         newCardDiv.classList.add('card');
         newCardDiv.id = i;
@@ -148,7 +159,6 @@ function addCardsToBoard(cardArray) {
         icon.classList.add(shuffledCards[i]);
 
         newCardDiv.addEventListener('click', clickListener, false);
-        // icon.addEventListener('click', clickListener, false);
         // state[shuffledCards[i]] = 0;  // Not sure if I want to use id's as keys or fas classes.
         let cardProps = {};
         cardProps["cardName"] = icon.classList.item(1);
@@ -160,7 +170,7 @@ function addCardsToBoard(cardArray) {
         newCardDiv.appendChild(icon);
         board.appendChild(newCardDiv);
     }
-    console.log(state);
+    // console.log(state);
 }
 
 addCardsToBoard(cards);
