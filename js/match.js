@@ -1,6 +1,6 @@
-
 // let state = {};
 let state = [];
+let moveCount = 0;
 
 const cards = [
     "fa-umbrella",
@@ -57,7 +57,7 @@ function gameComplete() {
             }
         }
         if (lockedCount == 16) {
-            window.alert("yay! \n you won! \n zero points");
+            window.alert("Congratulations! \nYou finished the game! \nzero points");
         }
     }, 1000);
 }
@@ -74,7 +74,14 @@ function getDeckStatus() {
     return total;
 }
 
+function move() {
+    moveCount++;
+    const counter = document.querySelector('.moves');
+    counter.textContent = moveCount + " moves";
+}
+
 function compareCards () {
+    move();
     let flag = 0;
     let cardOne;
     let cardTwo;
@@ -173,4 +180,18 @@ function addCardsToBoard(cardArray) {
     // console.log(state);
 }
 
+function configureInfo() {
+    const infoSection = document.querySelector('.info');
+    let counterDiv = document.createElement('div');
+    counterDiv.classList.add('moves');
+    counterDiv.textContent = moveCount + " moves";
+    infoSection.appendChild(counterDiv);
+
+    let timerDiv = document.createElement('div');
+    timerDiv.classList.add('timer');
+    timerDiv.textContent = "Time: 0";
+    infoSection.appendChild(timerDiv);
+}
+
+configureInfo();
 addCardsToBoard(cards);
