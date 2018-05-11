@@ -31,7 +31,7 @@ function shuffle(array) {
 }
 
 function clickListener (event) {
-    console.log(state);
+
     let target = event.target;
     // Handle icon or card div clicks
     if (target.classList.contains("fas")) {
@@ -39,7 +39,6 @@ function clickListener (event) {
         // newTarget.dispatchEvent(event);
     }
 
-    // console.log("card clicked");
     let status = getDeckStatus();  // A number
 
     if (status == 0) {
@@ -74,7 +73,7 @@ function getDeckStatus() {
             total++;
         }
     }
-    // console.log("total: ", total);
+
     return total;
 }
 
@@ -101,8 +100,6 @@ function compareCards () {
         }
     }
     if (state[cardOne].cardName === state[cardTwo].cardName) {
-        // console.log(state[cardOne].cardName);
-        // console.log(state[cardTwo].cardName);
         console.log("they match!");
         itsAMatch(state[cardOne], state[cardTwo]);
     }
@@ -147,7 +144,6 @@ function displayCard (target) {
         target.classList.add('open');
         flag = 1;
     }
-    // console.log(state[parseInt(target.id, 10)]);
     state[parseInt(target.id, 10)].open = 1;
     return flag;
 }
@@ -183,7 +179,6 @@ function addCardsToBoard(cardArray) {
         newCardDiv.appendChild(icon);
         board.appendChild(newCardDiv);
     }
-    // console.log(state);
 }
 
 function configureGame() {
@@ -210,7 +205,6 @@ function startGame() {
     // Remove cards if game hasn't started yet
     let isNewGame = 0;
     if (document.getElementById(0)) {
-        // console.log("there are already cards there");
         for (let c = 0; c < 16; c++) {
             let card = document.getElementById(c);
             card.remove();
