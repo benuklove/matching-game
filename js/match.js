@@ -1,6 +1,7 @@
 // let state = {};
 let state = [];
 let moveCount = 0;
+let gameover = 0;
 
 const cards = [
     "fa-umbrella",
@@ -29,6 +30,7 @@ function shuffle(array) {
 }
 
 function clickListener (event) {
+    console.log(state);
     let target = event.target;
     // Handle icon or card div clicks
     if (target.classList.contains("fas")) {
@@ -57,6 +59,7 @@ function gameComplete() {
             }
         }
         if (lockedCount == 16) {
+            gameover = 1;
             window.alert("Congratulations! \nYou finished the game! \nzero points");
         }
     }, 1000);
@@ -97,6 +100,8 @@ function compareCards () {
         }
     }
     if (state[cardOne].cardName === state[cardTwo].cardName) {
+        // console.log(state[cardOne].cardName);
+        // console.log(state[cardTwo].cardName);
         console.log("they match!");
         itsAMatch(state[cardOne], state[cardTwo]);
     }
@@ -183,35 +188,72 @@ function addCardsToBoard(cardArray) {
 function configureGame() {
     const infoSection = document.querySelector('.info');
 
-    // Start/reset game button
-    let startButton = document.createElement('div');
-    startButton.classList.add('start');
-    startButton.innerHTML = '<button onclick="startGame()">Start!</button>';
-    infoSection.appendChild(startButton);
+    let timerDiv = document.createElement('div');
+    timerDiv.classList.add('timer');
+    timerDiv.textContent = "Time: 0";
+    infoSection.appendChild(timerDiv);
 
     let counterDiv = document.createElement('div');
     counterDiv.classList.add('moves');
     counterDiv.textContent = moveCount + " moves";
     infoSection.appendChild(counterDiv);
 
-    let timerDiv = document.createElement('div');
-    timerDiv.classList.add('timer');
-    timerDiv.textContent = "Time: 0";
-    infoSection.appendChild(timerDiv);
+    // Start/reset game button
+    let startButton = document.createElement('div');
+    startButton.classList.add('start');
+    startButton.innerHTML = '<button onclick="startGame()">Start!</button>';
+    infoSection.appendChild(startButton);
 }
 
 function startGame() {
-    // console.log(state);
-    if (moveCount > 0) {
+    // Remove cards if game hasn't started yet
+    let isNewGame = 0;
+    if (document.getElementById(0)) {
+        // console.log("there are already cards there");
         for (let c = 0; c < 16; c++) {
             let card = document.getElementById(c);
-            // console.log(card);
             card.remove();
         }
         moveCount = 0;
+        const newCounterDiv = document.querySelector('.moves');
+        newCounterDiv.textContent = moveCount + " moves";
+        state = [];  // That one caused headaches!
+        gameover = 0;
+        isNewGame = 1;
     }
     addCardsToBoard(cards);
+    let intervalID;
+    if (isNewGame == 1) {
+        if (intervalID) {
+            stopTimer();
+        }
+    }
+    const start = Date.now();
+    gameTimer(start, isNewGame);
+}
+
+function gameTimer(startTime, isNewGame) {
+    // Set outer intervalID to watch for isNewGame ???
+    // Set inner intervalID to actually do timer ???
+    let intervalID = window.setInterval(function() {
+        let sec = Math.floor((Date.now() - startTime)/1000);
+        let timer = document.querySelector('.timer');
+        timer.textContent = "Time: " + sec;
+        // if (isNewGame == 1) {
+        //     clearInterval(intervalID);
+        // }
+    }, 1000);
+
+}
+
+// function timeIt(startTime) {
+//     let sec = Math.floor((Date.now() - startTime)/1000);
+//     let timer = document.querySelector('.timer');
+//     timer.textContent = "Time: " + sec;
+// }
+
+function stopTimer() {
+    clearInterval(intervalID);
 }
 
 configureGame();
-// addCardsToBoard(cards);
