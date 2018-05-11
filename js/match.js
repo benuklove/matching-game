@@ -180,8 +180,15 @@ function addCardsToBoard(cardArray) {
     // console.log(state);
 }
 
-function configureInfo() {
+function configureGame() {
     const infoSection = document.querySelector('.info');
+
+    // Start/reset game button
+    let startButton = document.createElement('div');
+    startButton.classList.add('start');
+    startButton.innerHTML = '<button onclick="startGame()">Start!</button>';
+    infoSection.appendChild(startButton);
+
     let counterDiv = document.createElement('div');
     counterDiv.classList.add('moves');
     counterDiv.textContent = moveCount + " moves";
@@ -193,5 +200,13 @@ function configureInfo() {
     infoSection.appendChild(timerDiv);
 }
 
-configureInfo();
-addCardsToBoard(cards);
+function startGame() {
+    // console.log(state);
+    for (let c = 0; c < 16; c++) {
+        // let card =
+    }
+    addCardsToBoard(cards);
+}
+
+configureGame();
+// addCardsToBoard(cards);

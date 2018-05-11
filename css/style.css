@@ -26,6 +26,9 @@ body {
     height: 100px;
     background-color: goldenrod;
 }
+.start {
+    width: 100%;
+}
 .moves {
     width: 100%;
 }
