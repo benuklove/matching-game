@@ -202,8 +202,13 @@ function configureGame() {
 
 function startGame() {
     // console.log(state);
-    for (let c = 0; c < 16; c++) {
-        // let card =
+    if (moveCount > 0) {
+        for (let c = 0; c < 16; c++) {
+            let card = document.getElementById(c);
+            // console.log(card);
+            card.remove();
+        }
+        moveCount = 0;
     }
     addCardsToBoard(cards);
 }
