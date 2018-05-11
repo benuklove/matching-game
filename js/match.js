@@ -2,6 +2,7 @@
 let state = [];
 let moveCount = 0;
 let gameover = 0;
+let intervalID;
 
 const cards = [
     "fa-umbrella",
@@ -222,38 +223,28 @@ function startGame() {
         isNewGame = 1;
     }
     addCardsToBoard(cards);
-    let intervalID;
-    if (isNewGame == 1) {
-        if (intervalID) {
-            stopTimer();
-        }
-    }
     const start = Date.now();
     gameTimer(start, isNewGame);
 }
 
 function gameTimer(startTime, isNewGame) {
-    // Set outer intervalID to watch for isNewGame ???
-    // Set inner intervalID to actually do timer ???
-    let intervalID = window.setInterval(function() {
-        let sec = Math.floor((Date.now() - startTime)/1000);
-        let timer = document.querySelector('.timer');
-        timer.textContent = "Time: " + sec;
-        // if (isNewGame == 1) {
-        //     clearInterval(intervalID);
-        // }
-    }, 1000);
 
-}
+    if (isNewGame == 0) {
+        intervalID = window.setInterval(function() {
+            let sec = Math.floor((Date.now() - startTime)/1000);
+            let timer = document.querySelector('.timer');
+            timer.textContent = "Time: " + sec;
+        }, 1000);
+    }
+    else {
+        clearInterval(intervalID);
+        intervalID = window.setInterval(function() {
+            let sec = Math.floor((Date.now() - startTime)/1000);
+            let timer = document.querySelector('.timer');
+            timer.textContent = "Time: " + sec;
+        }, 1000);
+    }
 
-// function timeIt(startTime) {
-//     let sec = Math.floor((Date.now() - startTime)/1000);
-//     let timer = document.querySelector('.timer');
-//     timer.textContent = "Time: " + sec;
-// }
-
-function stopTimer() {
-    clearInterval(intervalID);
 }
 
 configureGame();
