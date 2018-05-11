@@ -29,6 +29,15 @@ body {
     height: 100px;
     background-color: goldenrod;
 }
+.start {
+    width: 100%;
+}
+.moves {
+    width: 100%;
+}
+.timer {
+    width: 100%;
+}
 .gameboard {
     width: 100%;
     max-width: 599px;
