@@ -85,6 +85,15 @@ function move() {
     moveCount++;
     const counter = document.querySelector('.moves');
     counter.textContent = moveCount + " moves";
+
+    if (moveCount == 15) {
+        let star = document.getElementById('star2');
+        star.classList.replace('fas', 'far');
+    }
+    if (moveCount == 18) {
+        let star = document.getElementById('star1');
+        star.classList.replace('fas', 'far');
+    }
 }
 
 function compareCards () {
@@ -172,7 +181,6 @@ function addCardsToBoard(cardArray) {
         icon.classList.add(shuffledCards[i]);
 
         newCardDiv.addEventListener('click', clickListener, false);
-        // state[shuffledCards[i]] = 0;  // Not sure if I want to use id's as keys or fas classes.
         let cardProps = {};
         cardProps["cardName"] = icon.classList.item(1);
         cardProps["open"] = 0;
@@ -198,6 +206,19 @@ function configureGame() {
     counterDiv.textContent = moveCount + " moves";
     infoSection.appendChild(counterDiv);
 
+    let starTable = document.createElement('table');
+    starTable.classList.add('stars');
+    let starRow = document.createElement('tr');
+    for (let s = 0; s < 3; s++) {
+        let star = document.createElement('td');
+        star.classList.add('fas');
+        star.classList.add('fa-star');
+        star.id = "star" + s;
+        starRow.appendChild(star);
+    }
+    starTable.appendChild(starRow);
+    infoSection.appendChild(starTable);
+
     // Start/reset game button
     let startButton = document.createElement('div');
     startButton.classList.add('start');
@@ -220,6 +241,7 @@ function startGame() {
         gameover = 0;
         isNewGame = 1;
     }
+
     addCardsToBoard(cards);
     const start = Date.now();
     gameTimer(start, isNewGame);
