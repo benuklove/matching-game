@@ -240,6 +240,7 @@ function startGame() {
         state = [];  // That one caused headaches!
         gameover = 0;
         isNewGame = 1;
+        resetStars();
     }
 
     addCardsToBoard(cards);
@@ -257,14 +258,30 @@ function gameTimer(startTime, isNewGame) {
         }, 1000);
     }
     else {
-        clearInterval(intervalID);
-        intervalID = window.setInterval(function() {
-            let sec = Math.floor((Date.now() - startTime)/1000);
-            let timer = document.querySelector('.timer');
-            timer.textContent = "Time: " + sec;
-        }, 1000);
+        if (gameover == 1) {
+            clearInterval(intervalID);
+        }
+        else {
+            clearInterval(intervalID);
+            intervalID = window.setInterval(function() {
+                let sec = Math.floor((Date.now() - startTime)/1000);
+                let timer = document.querySelector('.timer');
+                timer.textContent = "Time: " + sec;
+            }, 1000);
+        }
+
     }
 
+}
+
+function resetStars() {
+    for (let s = 0; s < 3; s++) {
+        const starId = "star" + s;
+        const star = document.getElementById(starId);
+        if (star.classList.contains('far')) {
+            star.classList.replace('far', 'fas');
+        }
+    }
 }
 
 configureGame();
