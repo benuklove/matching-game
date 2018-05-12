@@ -38,8 +38,7 @@ function clickListener (event) {
         target = target.parentElement;
         // newTarget.dispatchEvent(event);
     }
-
-    let status = getDeckStatus();  // A number
+    let status = getDeckStatus(target);  // A number
 
     if (status == 0) {
         displayCard(target);
@@ -66,14 +65,19 @@ function gameComplete() {
 }
 
 // Determine if it's okay to flip the card (if there are 0 or 1 cards open)
-function getDeckStatus() {
+function getDeckStatus(target) {
+    // Check if clicked on same card
+    if (state[parseInt(target.id, 10)].open == 1) {
+        return 2;
+    }
+
     let total = 0;
+    let duplicate = 0;
     for (let c = 0; c < 16; c++) {
         if (state[c].open == 1 && state[c].locked == 0) {
             total++;
         }
     }
-
     return total;
 }
 
