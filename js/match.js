@@ -31,7 +31,6 @@ function shuffle(array) {
 }
 
 function clickListener (event) {
-
     let target = event.target;
     // Handle icon or card div clicks
     if (target.classList.contains("fas")) {
@@ -59,7 +58,20 @@ function gameComplete() {
         }
         if (lockedCount == 16) {
             gameover = 1;
-            window.alert("Congratulations! \nYou finished the game! \nzero points");
+            const time = parseInt(document.querySelector('.timer').textContent.split(" ")[1], 10);
+            const starsCollection = document.getElementsByClassName('fa-star');
+            let stars = 0;
+            for (let s = 0; s < 3; s++) {
+                console.log(starsCollection[s]);
+                if (starsCollection[s].classList.contains("fas")) {
+                    stars++;
+                }
+            }
+            window.alert(
+        `Congratulations!
+You finished the game in ${time} seconds!
+Star Rating: ${stars} stars!
+Would you like to play again?`);
         }
     }, 1000);
 }
