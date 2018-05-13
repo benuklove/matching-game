@@ -24,7 +24,7 @@ body {
 .info {
     width: 25%;
     max-width: 25%;
-    height: 500px;
+    height: 600px;
     background-color: goldenrod;
 }
 .start {
@@ -42,7 +42,7 @@ body {
 .gameboard {
     width: 65%;
     max-width: 65%;
-    height: 500px;
+    height: 600px;
     padding-left: 5%;
     padding-right: 5%;
     background-color: dodgerblue;

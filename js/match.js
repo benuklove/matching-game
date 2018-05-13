@@ -113,11 +113,9 @@ function compareCards () {
         }
     }
     if (state[cardOne].cardName === state[cardTwo].cardName) {
-        console.log("they match!");
         itsAMatch(state[cardOne], state[cardTwo]);
     }
     else {
-        console.log("they don't match.")
         itsNotAMatch(state[cardOne], state[cardTwo]);
     }
 }
@@ -144,7 +142,6 @@ function itsNotAMatch (cardOne, cardTwo) {
 
 function displayCard (target) {
     let flag = 0;
-    // console.log("from displayCard(event): ", typeof(tgt.id), tgt.id);  // A string
     if (target.classList.contains('open')) {
         target.classList.replace('open', 'closed');
         flag = 1;
@@ -237,7 +234,7 @@ function startGame() {
         moveCount = 0;
         const newCounterDiv = document.querySelector('.moves');
         newCounterDiv.textContent = moveCount + " moves";
-        state = [];  // That one caused headaches!
+        state = [];
         gameover = 0;
         isNewGame = 1;
         resetStars();

@@ -22,7 +22,7 @@ body {
 }
 .info {
     width: 30%;
-    height: 500px;
+    height: 600px;
     background-color: goldenrod;
 }
 .start {
@@ -39,7 +39,7 @@ body {
 }
 .gameboard {
     width: 60%;
-    height: 500px;
+    height: 600px;
     padding-left: 5%;
     padding-right: 5%;
     background-color: dodgerblue;
