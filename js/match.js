@@ -67,6 +67,7 @@ function gameComplete() {
                     stars++;
                 }
             }
+            congrats(time, stars);
             window.alert(
         `Congratulations!
 You finished the game in ${time} seconds!
@@ -74,6 +75,29 @@ Star Rating: ${stars} stars!
 Would you like to play again?`);
         }
     }, 1000);
+}
+
+function congrats(gameTime, starCount) {
+    const modal = document.getElementById('endGameModal');
+    const span = document.getElementsByClassName("close")[0];
+    const gameResult = document.createElement('p');
+
+    gameResult.textContent = `Congratulations!
+    You finished the game in ${gameTime} seconds!
+    Star Rating: ${starCount} stars!
+    Would you like to play again?`;
+
+    modal.firstElementChild.appendChild(gameResult);
+
+    modal.style.display = 'block';
+    span.onclick = function() {
+        modal.style.display = "none";
+    }
+    window.onclick = function(event) {
+        if (event.target == modal) {
+            modal.style.display = "none";
+        }
+    }
 }
 
 // Determine if it's okay to flip the card (if there are 0 or 1 cards open)
