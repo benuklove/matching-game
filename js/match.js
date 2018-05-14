@@ -31,6 +31,7 @@ function shuffle(array) {
 }
 
 function clickListener (event) {
+    // congrats(300, 2);
     let target = event.target;
     // Handle icon or card div clicks
     if (target.classList.contains("fas")) {
@@ -58,11 +59,14 @@ function gameComplete() {
         }
         if (lockedCount == 16) {
             gameover = 1;
-            const time = parseInt(document.querySelector('.timer').textContent.split(" ")[1], 10);
+            const timeLoc = document.querySelector('.timer');
+            const time = parseInt(timeLoc.textContent.split(" ")[1], 10);
+            clearInterval(intervalID);
+            time.textContent = "Time: " + time;
+
             const starsCollection = document.getElementsByClassName('fa-star');
             let stars = 0;
             for (let s = 0; s < 3; s++) {
-                console.log(starsCollection[s]);
                 if (starsCollection[s].classList.contains("fas")) {
                     stars++;
                 }
@@ -75,14 +79,20 @@ function gameComplete() {
 function congrats(gameTime, starCount) {
     const modal = document.getElementById('endGameModal');
     const span = document.getElementsByClassName('close')[0];
-    const gameResult = document.createElement('p');
 
-    gameResult.textContent = `Congratulations!
-    You finished the game in ${gameTime} seconds!
-    Star Rating: ${starCount} stars!
-    Would you like to play again?`;
+    const lineOne = document.createElement('p');
+    lineOne.textContent = `Congratulations!`;
+    const lineTwo = document.createElement('p');
+    lineTwo.textContent = `You finished the game in ${gameTime} seconds!`;
+    const lineThree = document.createElement('p');
+    lineThree.textContent = `Star Rating: ${starCount} stars!`;
+    const lineFour = document.createElement('p');
+    lineFour.textContent = `Would you like to play again?`;
+    lines = [lineOne, lineTwo, lineThree, lineFour];
 
-    modal.firstElementChild.appendChild(gameResult);
+    for (let l = 0; l < lines.length; l++) {
+        modal.firstElementChild.appendChild(lines[l]);
+    }
 
     modal.style.display = 'block';
     span.onclick = function() {
@@ -314,8 +324,10 @@ function resetStars() {
 }
 
 function resetModal() {
-    let paragraph = document.querySelector('p');
-    paragraph.remove();
+    let paragraphs = document.querySelectorAll('p');
+    for (let p = 0; p < paragraphs.length; p++) {
+        paragraphs[p].remove();
+    }
 }
 
 configureGame();
