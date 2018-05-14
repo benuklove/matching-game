@@ -68,18 +68,13 @@ function gameComplete() {
                 }
             }
             congrats(time, stars);
-            window.alert(
-        `Congratulations!
-You finished the game in ${time} seconds!
-Star Rating: ${stars} stars!
-Would you like to play again?`);
         }
     }, 1000);
 }
 
 function congrats(gameTime, starCount) {
     const modal = document.getElementById('endGameModal');
-    const span = document.getElementsByClassName("close")[0];
+    const span = document.getElementsByClassName('close')[0];
     const gameResult = document.createElement('p');
 
     gameResult.textContent = `Congratulations!
@@ -274,6 +269,7 @@ function startGame() {
         gameover = 0;
         isNewGame = 1;
         resetStars();
+        resetModal();
     }
 
     addCardsToBoard(cards);
@@ -315,6 +311,11 @@ function resetStars() {
             star.classList.replace('far', 'fas');
         }
     }
+}
+
+function resetModal() {
+    let paragraph = document.querySelector('p');
+    paragraph.remove();
 }
 
 configureGame();
