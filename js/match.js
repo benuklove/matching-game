@@ -31,7 +31,6 @@ function shuffle(array) {
 }
 
 function clickListener (event) {
-    // congrats(300, 2);
     let target = event.target;
     // Handle icon or card div clicks
     if (target.classList.contains("fas")) {

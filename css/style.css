@@ -3,6 +3,7 @@ body {
     padding: 10px;
     max-width: 100%;
     text-align: center;
+    background-color: #092E20;
 }
 .container {
     display: flex;
@@ -13,21 +14,21 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: red;  /* temporary */
-    color: red;   /*temporary */
+    background-color: #092E20;
+    color: #092E20;
 }
 .card {
-    /* margin: 10px; */
     margin: 5%;
     width: 15%;
     min-width: 40px;
     height: 12%;
+    min-height: 13%;
     font-size: 2em;
 }
 .info {
     width: 100%;
     height: 100px;
-    background-color: goldenrod;
+    background-color: #0B4C36;
 }
 .start {
     width: 100%;
@@ -44,9 +45,8 @@ body {
 .gameboard {
     width: 100%;
     height: 100%;
-    /* min-width: 40px;
-    min-height: 40px; */
-    background-color: dodgerblue;
+    min-height: 470px;
+    background-color: #3BB58C;
 }
 .deck {
     display: flex;
@@ -55,15 +55,47 @@ body {
     justify-content: space-around;
 }
 .open {
-    color: yellow;
+    color: white;
     /* backface-visibility: visible; */
     /* animation-duration: 3s;
     animation-name: bounce;
     animation-iteration-count: 3; */
 }
 .closed {
-    color: red;
+    background-color: #092E20;
 }
 /* @keyframes boing {
 
 } */
+.modal {
+    display: none; /* Hidden by default */
+    position: fixed; /* Stay in place */
+    z-index: 1; /* Sit on top */
+    padding-top: 100px; /* Location of the box */
+    left: 0;
+    top: 0;
+    width: 100%; /* Full width */
+    height: 100%; /* Full height */
+    overflow: auto; /* Enable scroll if needed */
+    background-color: rgb(0,0,0); /* Fallback color */
+    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+}
+.modal-content {
+    background-color: #fefefe;
+    margin: auto;
+    padding: 20px;
+    border: 1px solid #888;
+    width: 80%;
+}
+.close {
+    color: #aaaaaa;
+    float: right;
+    font-size: 28px;
+    font-weight: bold;
+}
+.close:hover,
+.close:focus {
+    color: #000;
+    text-decoration: none;
+    cursor: pointer;
+}

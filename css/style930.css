@@ -3,6 +3,12 @@ body {
     padding: 10px;
     max-width: 915px;
     text-align: center;
+    background-color: #092E20;
+}
+.canvas {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
 }
 .container {
     display: flex;
@@ -12,8 +18,8 @@ body {
     display: flex;
     align-items: center;
     justify-content: center;
-    background-color: red;  /* temporary */
-    color: red;   /* temporary */
+    background-color: #092E20;
+    color: #092E20;
 }
 .card {
     margin: 10px;
@@ -25,7 +31,7 @@ body {
     width: 25%;
     max-width: 25%;
     height: 600px;
-    background-color: goldenrod;
+    background-color: #0B4C36;
 }
 .start {
     width: 100%;
@@ -45,7 +51,7 @@ body {
     height: 600px;
     padding-left: 5%;
     padding-right: 5%;
-    background-color: dodgerblue;
+    background-color: #3BB58C;
 }
 .deck {
     display: flex;
@@ -54,14 +60,14 @@ body {
     justify-content: space-around;
 }
 .open {
-    color: yellow;
+    color: white;
     /* backface-visibility: visible; */
     /* animation-duration: 3s;
     animation-name: bounce;
     animation-iteration-count: 3; */
 }
 .closed {
-    color: red;
+    background-color: #092E20;
 }
 .modal {
     display: none; /* Hidden by default */
