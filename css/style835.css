@@ -29,9 +29,13 @@ body {
 .info {
     display: flex;
     flex-direction: column;
+    border-top-left-radius: 15px;
+    border-bottom-left-radius: 15px;
     width: 30%;
     height: 600px;
     background-color: #0B4C36;
+    font-family: 'Comfortaa', cursive;
+    font-size: 28px;
 }
 .start {
     width: 100%;
@@ -46,6 +50,8 @@ body {
     width: 100%;
 }
 .gameboard {
+    border-top-right-radius: 15px;
+    border-bottom-right-radius: 15px;
     width: 60%;
     height: 600px;
     padding-left: 5%;
