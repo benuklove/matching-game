@@ -28,6 +28,8 @@ body {
     font-size: 2em;
 }
 .info {
+    display: flex;
+    flex-direction: column;
     width: 25%;
     max-width: 25%;
     height: 600px;

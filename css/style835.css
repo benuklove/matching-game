@@ -27,6 +27,8 @@ body {
     font-size: 2em;
 }
 .info {
+    display: flex;
+    flex-direction: column;
     width: 30%;
     height: 600px;
     background-color: #0B4C36;
