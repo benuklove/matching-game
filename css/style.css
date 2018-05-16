@@ -5,6 +5,10 @@ body {
     text-align: center;
     background-color: #092E20;
 }
+.header {
+    width: 40%;
+    align-content: center;
+}
 .container {
     display: flex;
     flex-wrap: wrap;
@@ -27,25 +31,33 @@ body {
 }
 .info {
     display: flex;
+    justify-content: space-around;
     border-top-left-radius: 15px;
     border-top-right-radius: 15px;
     width: 100%;
     height: 100px;
     background-color: #0B4C36;
+    color: white;
     font-family: 'Comfortaa', cursive;
     font-size: 18px;
 }
+.info-div {
+    width: 60%;
+    display: flex;
+    flex-wrap: wrap;
+    padding-top: 5%;
+}
 .start {
-    width: 100%;
+    width: 50%;
 }
 .moves {
-    width: 100%;
+    width: 50%;
 }
 .stars {
-    width: 100%;
+    width: 50%;
 }
 .timer {
-    width: 100%;
+    width: 50%;
 }
 .gameboard {
     border-bottom-left-radius: 15px;

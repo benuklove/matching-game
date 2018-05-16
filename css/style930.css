@@ -5,6 +5,9 @@ body {
     text-align: center;
     background-color: #092E20;
 }
+.header {
+    height: 30%;
+}
 .canvas {
     display: flex;
     flex-direction: column;
@@ -30,14 +33,21 @@ body {
 .info {
     display: flex;
     flex-direction: column;
+    justify-content: space-around;
     border-top-left-radius: 15px;
     border-bottom-left-radius: 15px;
-    width: 25%;
-    max-width: 25%;
+    width: 30%;
+    max-width: 30%;
     height: 600px;
     background-color: #0B4C36;
+    color: white;
     font-family: 'Comfortaa', cursive;
     font-size: 28px;
+}
+.info-div {
+    height: 70%;
+    display: flex;
+    flex-wrap: wrap;
 }
 .start {
     width: 100%;
@@ -54,7 +64,7 @@ body {
 .gameboard {
     border-top-right-radius: 15px;
     border-bottom-right-radius: 15px;
-    width: 65%;
+    width: 60%;
     max-width: 65%;
     height: 600px;
     padding-left: 5%;
@@ -78,17 +88,17 @@ body {
     background-color: #092E20;
 }
 .modal {
-    display: none; /* Hidden by default */
-    position: fixed; /* Stay in place */
-    z-index: 1; /* Sit on top */
-    padding-top: 100px; /* Location of the box */
+    display: none;
+    position: fixed;
+    z-index: 1;
+    padding-top: 100px;
     left: 0;
     top: 0;
-    width: 100%; /* Full width */
-    height: 100%; /* Full height */
-    overflow: auto; /* Enable scroll if needed */
-    background-color: rgb(0,0,0); /* Fallback color */
-    background-color: rgba(0,0,0,0.4); /* Black w/ opacity */
+    width: 100%;
+    height: 100%;
+    overflow: auto;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
 }
 .modal-content {
     background-color: #fefefe;
