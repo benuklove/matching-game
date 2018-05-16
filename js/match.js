@@ -84,7 +84,12 @@ function congrats(gameTime, starCount) {
     const lineTwo = document.createElement('p');
     lineTwo.textContent = `You finished the game in ${gameTime} seconds!`;
     const lineThree = document.createElement('p');
-    lineThree.textContent = `Star Rating: ${starCount} stars!`;
+    if (starCount > 1) {
+        lineThree.textContent = `Star Rating: ${starCount} stars!`;
+    }
+    else {
+        lineThree.textContent = `Star Rating: ${starCount} star!`;
+    }
     const lineFour = document.createElement('p');
     lineFour.textContent = `Would you like to play again?`;
     lines = [lineOne, lineTwo, lineThree, lineFour];
@@ -261,7 +266,6 @@ function configureGame() {
     }
     starTable.appendChild(starRow);
     infoSection.appendChild(starTable);
-
 }
 
 function startGame() {
