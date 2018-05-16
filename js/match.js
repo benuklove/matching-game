@@ -233,6 +233,12 @@ function addCardsToBoard(cardArray) {
 function configureGame() {
     const infoSection = document.querySelector('.info');
 
+    // Start/reset game button
+    let startButton = document.createElement('div');
+    startButton.classList.add('start');
+    startButton.innerHTML = '<button onclick="startGame()">Start!</button>';
+    infoSection.appendChild(startButton);
+
     let timerDiv = document.createElement('div');
     timerDiv.classList.add('timer');
     timerDiv.textContent = "Time: 0";
@@ -256,11 +262,6 @@ function configureGame() {
     starTable.appendChild(starRow);
     infoSection.appendChild(starTable);
 
-    // Start/reset game button
-    let startButton = document.createElement('div');
-    startButton.classList.add('start');
-    startButton.innerHTML = '<button onclick="startGame()">Start!</button>';
-    infoSection.appendChild(startButton);
 }
 
 function startGame() {
