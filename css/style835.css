@@ -84,6 +84,20 @@ body {
 .closed {
     background-color: #092E20;
 }
+.animate-right {
+    /* animation-delay: 200ms; */
+    animation-duration: 200ms;
+    animation-iteration-count: 4;
+    animation-name: right;
+}
+@keyframes right {
+    from {
+        font-size: 1%;
+    }
+    to {
+        font-size: 250%;
+    }
+}
 .animate-wrong {
     animation-delay: 500ms;
     animation-duration: 200ms;

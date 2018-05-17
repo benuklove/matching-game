@@ -163,9 +163,15 @@ function compareCards () {
     }
 }
 
-function itsAMatch (firstCard, secondCard) {
-    firstCard.locked = 1;
-    secondCard.locked = 1;
+function itsAMatch (cardOne, cardTwo) {
+    cardOne.locked = 1;
+    cardTwo.locked = 1;
+
+    let firstCard = document.getElementById(cardOne.divID);
+    let secondCard = document.getElementById(cardTwo.divID);
+    firstCard.classList.add('animate-right');
+    secondCard.classList.add('animate-right');
+
 
     gameComplete();
 }
