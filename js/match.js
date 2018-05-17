@@ -172,7 +172,6 @@ function itsAMatch (cardOne, cardTwo) {
     firstCard.classList.add('animate-right');
     secondCard.classList.add('animate-right');
 
-
     gameComplete();
 }
 
@@ -223,14 +222,11 @@ function addCardsToBoard(cardArray) {
     const board = document.querySelector('.gameboard');
 
     for (let i = 0; i < shuffledCards.length; i++) {
-        // There's probably a better way to add multiple classes
         let newCardDiv = document.createElement('div');
-        newCardDiv.classList.add('box');
-        newCardDiv.classList.add('card');
+        newCardDiv.classList.add('box', 'card');
         newCardDiv.id = i;
         let icon = document.createElement('i');
-        icon.classList.add('fas');
-        icon.classList.add(shuffledCards[i]);
+        icon.classList.add('fas', shuffledCards[i]);
 
         newCardDiv.addEventListener('click', clickListener, false);
         let cardProps = {};
@@ -272,8 +268,7 @@ function configureGame() {
     let starRow = document.createElement('tr');
     for (let s = 0; s < 3; s++) {
         let star = document.createElement('td');
-        star.classList.add('fas');
-        star.classList.add('fa-star');
+        star.classList.add('fas', 'fa-star');
         star.id = "star" + s;
         starRow.appendChild(star);
     }

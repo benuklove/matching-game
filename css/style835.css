@@ -76,16 +76,11 @@ body {
 }
 .open {
     color: white;
-    /* backface-visibility: visible; */
-    /* animation-duration: 3s;
-    animation-name: bounce;
-    animation-iteration-count: 3; */
 }
 .closed {
     background-color: #092E20;
 }
 .animate-right {
-    /* animation-delay: 200ms; */
     animation-duration: 200ms;
     animation-iteration-count: 4;
     animation-name: right;
