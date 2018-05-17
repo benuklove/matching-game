@@ -46,6 +46,9 @@ function clickListener (event) {
     }
 }
 
+/**
+ * @description Check for game completion, if so, handle timer, stars and congrats
+ */
 function gameComplete() {
     setTimeout(function () {
         let lockedCount = 0;
@@ -73,6 +76,11 @@ function gameComplete() {
     }, 1000);
 }
 
+/**
+ * @description Congratulations modal with resulting game info
+ * @param {number} gameTime - Length of game in seconds
+ * @param {number} starCount - Number of stars earned in the game
+ */
 function congrats(gameTime, starCount) {
     const modal = document.getElementById('endGameModal');
     const span = document.getElementsByClassName('close')[0];
@@ -107,7 +115,11 @@ function congrats(gameTime, starCount) {
     }
 }
 
-// Determine if it's okay to flip the card (if there are 0 or 1 cards open)
+/**
+ * @description Determine if it's okay to flip the card (if there are 0 or 1 cards open)
+ * @param {Event.target} target - The event.target of the EventListener
+ * @returns {number} total - Flag variable, 0, 1, or 2
+ */
 function getDeckStatus(target) {
     // Check if clicked on same card
     if (state[parseInt(target.id, 10)].open == 1) {
@@ -139,6 +151,10 @@ function move() {
     }
 }
 
+/**
+ * @description Compare the card names to see if they are the same
+ * @param {null} This function acts on the global 'state' array
+ */
 function compareCards () {
     move();
     let flag = 0;
@@ -163,6 +179,11 @@ function compareCards () {
     }
 }
 
+/**
+ * @description If cards match, animate, lock, and check for end of game
+ * @param {number} cardOne - Index of the card in the 'state' array
+ * @param {number} cardOne - Index of the card in the 'state' array
+ */
 function itsAMatch (cardOne, cardTwo) {
     cardOne.locked = 1;
     cardTwo.locked = 1;
@@ -175,6 +196,11 @@ function itsAMatch (cardOne, cardTwo) {
     gameComplete();
 }
 
+/**
+ * @description If cards do not match, animate and close
+ * @param {number} cardOne - Index of the card in the 'state' array
+ * @param {number} cardOne - Index of the card in the 'state' array
+ */
 function itsNotAMatch (cardOne, cardTwo) {
     let firstCard = document.getElementById(cardOne.divID);
     let secondCard = document.getElementById(cardTwo.divID);
@@ -194,6 +220,11 @@ function itsNotAMatch (cardOne, cardTwo) {
     }, 2000);
 }
 
+/**
+ * @description Display card icon
+ * @param {Event.target} target - The event.target of the EventListener
+ * @returns {number} flag - Flag variable, 0 or 1
+ */
 function displayCard (target) {
     let flag = 0;
     if (target.classList.contains('open')) {
@@ -212,9 +243,10 @@ function displayCard (target) {
     return flag;
 }
 
-// IF THERE'S A MATCH - Remove the listeners for those two.
-
-// MAYBE USE createDocumentFragment !!!!!
+/**
+ * @description Create cards, icons, and add card properties to 'state' array
+ * @param {array} cardArray - Array of strings describing icon classes
+ */
 function addCardsToBoard(cardArray) {
     const cards = cardArray.concat(cardArray);
     const shuffledCards = shuffle(cards);
@@ -241,6 +273,9 @@ function addCardsToBoard(cardArray) {
     }
 }
 
+/**
+ * @description Game and statistics setup with start game button
+ */
 function configureGame() {
     const infoSection = document.querySelector('.info');
     const infoDiv = document.createElement('div');
@@ -276,6 +311,9 @@ function configureGame() {
     infoDiv.appendChild(starTable);
 }
 
+/**
+ * @description Everything concerned with starting (or restarting) a new game
+ */
 function startGame() {
     // Remove cards if game hasn't started yet
     let isNewGame = 0;
@@ -299,6 +337,11 @@ function startGame() {
     gameTimer(start, isNewGame);
 }
 
+/**
+ * @description Main game timer
+ * @param {number} startTime - Milliseconds of UNIX epoch time
+ * @param {number} isNewGame - Flag indicating a game restart or brand new game
+ */
 function gameTimer(startTime, isNewGame) {
 
     if (isNewGame == 0) {
