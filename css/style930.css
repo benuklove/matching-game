@@ -87,6 +87,20 @@ body {
 .closed {
     background-color: #092E20;
 }
+.animate-wrong {
+    animation-delay: 500ms;
+    animation-duration: 200ms;
+    animation-iteration-count: 2;
+    animation-name: wrong;
+}
+@keyframes wrong {
+    from {
+        background-color: red;
+    }
+    to {
+        background-color: #092E20;
+    }
+}
 .modal {
     display: none;
     position: fixed;

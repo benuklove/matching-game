@@ -1,4 +1,3 @@
-// let state = {};
 let state = [];
 let moveCount = 0;
 let gameover = 0;
@@ -35,9 +34,8 @@ function clickListener (event) {
     // Handle icon or card div clicks
     if (target.classList.contains("fas")) {
         target = target.parentElement;
-        // newTarget.dispatchEvent(event);
     }
-    let status = getDeckStatus(target);  // A number
+    let status = getDeckStatus(target);
 
     if (status == 0) {
         displayCard(target);
@@ -173,12 +171,18 @@ function itsAMatch (firstCard, secondCard) {
 }
 
 function itsNotAMatch (cardOne, cardTwo) {
+    let firstCard = document.getElementById(cardOne.divID);
+    let secondCard = document.getElementById(cardTwo.divID);
+
+    firstCard.classList.add('animate-wrong');
+    secondCard.classList.add('animate-wrong');
+
     setTimeout(function () {
         cardOne.open = 0;
         cardTwo.open = 0;
 
-        let firstCard = document.getElementById(cardOne.divID);
-        let secondCard = document.getElementById(cardTwo.divID);
+        firstCard.classList.remove('animate-wrong');
+        secondCard.classList.remove('animate-wrong');
 
         firstCard.classList.replace('open', 'closed');
         secondCard.classList.replace('open', 'closed');
