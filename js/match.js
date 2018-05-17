@@ -1,8 +1,10 @@
+// Global variables to manage game state
 let state = [];
 let moveCount = 0;
 let gameover = 0;
 let intervalID;
 
+// Card icons from Font Awesome, https://fontawesome.com/
 const cards = [
     "fa-umbrella",
     "fa-fire",
@@ -13,6 +15,9 @@ const cards = [
     "fa-tree",
     "fa-truck-moving",
 ]
+
+// Main function call to set up the game
+configureGame();
 
 // Shuffle function from http://stackoverflow.com/a/2450976
 function shuffle(array) {
@@ -363,9 +368,7 @@ function gameTimer(startTime, isNewGame) {
                 timer.textContent = "Time: " + sec;
             }, 1000);
         }
-
     }
-
 }
 
 function resetStars() {
@@ -384,5 +387,3 @@ function resetModal() {
         paragraphs[p].remove();
     }
 }
-
-configureGame();
