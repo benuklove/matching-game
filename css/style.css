@@ -1,19 +1,3 @@
-body {
-    margin: 0 auto;
-    padding: 10px;
-    max-width: 100%;
-    text-align: center;
-    background-color: #092E20;
-}
-.header {
-    width: 40%;
-    align-content: center;
-}
-.container {
-    display: flex;
-    flex-wrap: wrap;
-    height: 450px;
-}
 .box {
     display: flex;
     align-items: center;
@@ -22,50 +6,199 @@ body {
     color: #092E20;
 }
 .card {
-    margin: 5%;
-    width: 15%;
-    min-width: 40px;
-    height: 12%;
-    min-height: 13%;
+    margin: 10px;
+    width: 100px;
+    height: 100px;
     font-size: 2em;
 }
-.info {
-    display: flex;
-    justify-content: space-around;
-    border-top-left-radius: 15px;
-    border-top-right-radius: 15px;
-    width: 100%;
-    height: 100px;
-    background-color: #0B4C36;
-    color: white;
-    font-family: 'Comfortaa', cursive;
-    font-size: 18px;
+@media screen and (max-width: 834px) {
+    body {
+        margin: 0 auto;
+        padding: 10px;
+        max-width: 100%;
+        text-align: center;
+        background-color: #092E20;
+    }
+    .header {
+        width: 40%;
+        align-content: center;
+    }
+    .info-div {
+        width: 60%;
+        display: flex;
+        flex-wrap: wrap;
+        padding-top: 5%;
+    }
+    .start {
+        width: 50%;
+    }
+    .moves {
+        width: 50%;
+    }
+    .stars {
+        width: 50%;
+    }
+    .timer {
+        width: 50%;
+    }
 }
-.info-div {
-    width: 60%;
-    display: flex;
-    flex-wrap: wrap;
-    padding-top: 5%;
+@media screen and (max-width: 614px) {
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        height: 450px;
+    }
+    .gameboard {
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        width: 100%;
+        height: 100%;
+        min-height: 470px;
+        background-color: #3BB58C;
+    }
+    .info {
+        display: flex;
+        justify-content: space-around;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        width: 100%;
+        height: 100px;
+        background-color: #0B4C36;
+        color: white;
+        font-family: 'Comfortaa', cursive;
+        font-size: 18px;
+    }
+    .card {
+        margin: 5%;
+        width: 15%;
+        min-width: 40px;
+        height: 12%;
+        min-height: 13%;
+        font-size: 2em;
+    }
 }
-.start {
-    width: 50%;
+@media screen and (min-width: 615px) and (max-width: 834px) {
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-content: center;
+    }
+    .gameboard {
+        border-bottom-left-radius: 15px;
+        border-bottom-right-radius: 15px;
+        width: 100%;
+        max-width: 599px;
+        height: 500px;
+        background-color: #3BB58C;
+    }
+    .info {
+        display: flex;
+        justify-content: space-around;
+        border-top-left-radius: 15px;
+        border-top-right-radius: 15px;
+        width: 100%;
+        max-width: 599px;
+        height: 100px;
+        background-color: #0B4C36;
+        color: white;
+        font-family: 'Comfortaa', cursive;
+        font-size: 20px;
+    }
 }
-.moves {
-    width: 50%;
+@media screen and (min-width: 835px) and (max-width: 929px) {
+    body {
+        margin: 0 auto;
+        padding: 10px;
+        text-align: center;
+        background-color: #092E20;
+    }
+    .gameboard {
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        width: 60%;
+        height: 600px;
+        padding-left: 5%;
+        padding-right: 5%;
+        background-color: #3BB58C;
+    }
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        width: 30%;
+        height: 600px;
+        background-color: #0B4C36;
+        color: white;
+        font-family: 'Comfortaa', cursive;
+        font-size: 28px;
+    }
 }
-.stars {
-    width: 50%;
+@media screen and (min-width: 930px) {
+    body {
+        margin: 0 auto;
+        padding: 10px;
+        max-width: 915px;
+        text-align: center;
+        background-color: #092E20;
+    }
+    .gameboard {
+        border-top-right-radius: 15px;
+        border-bottom-right-radius: 15px;
+        width: 60%;
+        max-width: 65%;
+        height: 600px;
+        padding-left: 5%;
+        padding-right: 5%;
+        background-color: #3BB58C;
+    }
+    .info {
+        display: flex;
+        flex-direction: column;
+        justify-content: space-around;
+        border-top-left-radius: 15px;
+        border-bottom-left-radius: 15px;
+        width: 30%;
+        max-width: 30%;
+        height: 600px;
+        background-color: #0B4C36;
+        color: white;
+        font-family: 'Comfortaa', cursive;
+        font-size: 28px;
+    }
 }
-.timer {
-    width: 50%;
-}
-.gameboard {
-    border-bottom-left-radius: 15px;
-    border-bottom-right-radius: 15px;
-    width: 100%;
-    height: 100%;
-    min-height: 470px;
-    background-color: #3BB58C;
+@media screen and (min-width: 835px) {
+    .header {
+        height: 30%;
+    }
+    .canvas {
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+    }
+    .container {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .info-div {
+        height: 70%;
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .start {
+        width: 100%;
+    }
+    .moves {
+        width: 100%;
+    }
+    .stars {
+        width: 100%;
+    }
+    .timer {
+        width: 100%;
+    }
 }
 .deck {
     display: flex;
