@@ -17,7 +17,7 @@ Flip pairs of cards to find matches
 User-tested on Chrome 66 (Linux), Chrome 66 (Android 7.0), Chrome 66 (Android 8.1), and Firefox 60.0 (Linux)
 
 ### Credits
-Multiple sources were used to inform the creation of this game
+Multiple sources were used to inform the creation of this game:
 1. [Grow with Google](https://grow.google/) and [Udacity](https://www.udacity.com/course/front-end-web-developer-nanodegree--nd001) javascript courses
 2. [MDN Web Docs](https://developer.mozilla.org/en-US/)
 3. [w3schools.com](https://www.w3schools.com/) including [modal](https://www.w3schools.com/howto/howto_css_modals.asp) creation.
